@@ -163,10 +163,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
     --
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
+    -- [((m .|. modm, k), windows $ f i)
+    --     | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+    --     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+    -- ++
 
     --
     -- mod-shift-{Up Arrow,Down Arrow}. Move current window to screen 1 or 2.
@@ -234,7 +234,6 @@ myLayout = avoidStruts $ smartBorders (tiled ||| Mirror tiled ||| noBorders Full
 
 myManageHook = fullscreenManageHook <+> manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
-    , title     =? "WOL - Watchtower ONLINE LIBRARY" --> doFloat
     , title     =? "Borkski"        --> doFloat
     , title     =? "Ben"            --> doFloat
     , title     =? "Friends List"   --> doFloat
@@ -280,9 +279,11 @@ myStartupHook = do
   spawnOnce "copyq"
   spawnOnce "alarm-clock-applet --hidden"
   spawnOnce "flatpak run net.agalwood.Motrix"
+-- The mxw commands set my mouse keys on my Glorious Model D Wireless.
   spawnOnce "mxw config bind back key code BracketRight"
   spawnOnce "mxw config bind forward key code BracketLeft"
   spawnOnce "polkit-dumb-agent"
+-- Ingore this its just a personal app I run with Brave (my browser)
   spawnOnce "/opt/brave-bin/brave --profile-directory=Default --app-id=bkhniolgpcpeomkjmokfdpkionammijb"
 ------------------------------------------------------------------------
 --
@@ -334,7 +335,7 @@ myConfig = def {
         startupHook        = myStartupHook >> addEWMHFullscreen
     }
 
--- | Finally, a copy of the default bindings in simple textual tabular format.
+-- | I haven't done much here so just ignore it.
 help :: String
 help = unlines ["The default modifier key is 'super'. Default keybindings:",
     "",
