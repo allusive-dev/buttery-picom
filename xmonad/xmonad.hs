@@ -217,7 +217,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Layouts:
 
 -- NOTES:
--- Full layout removes all window borders, this is useful when gaming or for single window productivity where the borders are not needed to show the active window.
+-- Full layout removes all window borders, this is useful when gaming or for single window productivity where the borders are not needed to show the active window. *Borders have been removed in the latest version of this config.
 
 myLayout = avoidStruts $ smartBorders (tiled ||| Mirror tiled ||| noBorders Full ||| threeCol ||| multiCol [1] 1 0.01 (-0.5))
   where
